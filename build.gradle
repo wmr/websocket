@@ -27,10 +27,13 @@ configurations.all {
 	exclude group: 'org.eclipse.jetty', module: 'jetty-server'
 	exclude group: 'org.eclipse.jetty', module: 'jetty-util'
 	exclude group: 'org.eclipse.jetty', module: 'jetty-util-ajax'
+	exclude group: 'io.netty', module: 'netty-all'
+	exclude group: 'com.google.code.findbugs', module: 'jsr305'
 }
 
 dependencies {
 
+	implementation 'info.picocli:picocli:4.2.0'
 	implementation 'org.jboss.xnio:xnio-api:3.8.0.Final'
 	implementation 'org.jboss.xnio:xnio-nio:3.8.0.Final'
 
@@ -38,26 +41,26 @@ dependencies {
 	implementation 'org.apache.avro:avro:1.9.2'
 
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.10.3'
-	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-ion:2.10.3'
-	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-avro:2.10.3'
 	implementation group: 'org.apache.orc', name: 'orc-core', version: '1.6.2'
 	implementation (group: 'org.apache.hadoop', name: 'hadoop-common', version: '3.2.1') {
 
 	}
-	implementation group: 'org.apache.hadoop', name: 'hadoop-hdfs', version: '3.2.1'
+//	implementation group: 'org.apache.hadoop', name: 'hadoop-hdfs', version: '3.2.1'
 	implementation group: 'org.apache.hadoop', name: 'hadoop-hdfs-client', version: '3.2.1'
+	implementation 'io.projectreactor:reactor-core'
 
 
-	compile 'io.springfox:springfox-swagger2:2.9.2'
-	compile 'io.springfox:springfox-swagger-ui:2.9.2'
+//	compile 'io.springfox:springfox-swagger2:2.9.2'
+//	compile 'io.springfox:springfox-swagger-ui:2.9.2'
 
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation ('org.springframework.boot:spring-boot-starter-websocket') {
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-	}
-	implementation 'org.springframework.boot:spring-boot-starter-undertow'
+//	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//	implementation ('org.springframework.boot:spring-boot-starter-websocket') {
+//		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+//	}
+//	implementation 'org.springframework.boot:spring-boot-starter-undertow'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
